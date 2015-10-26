@@ -50,7 +50,7 @@ public class InstagramPhotoAdapter extends ArrayAdapter<InstagramPhoto> {
         // Clear out the image
         ivPhoto.setImageResource(0);
         //Insert Image using Picasso
-        Picasso.with(getContext()).load(photo.getImageUrl()).placeholder(R.drawable.loader).into(ivPhoto);
+        Picasso.with(getContext()).load(photo.getImageUrl()).placeholder(R.drawable.default_lg).into(ivPhoto);
         // Return the created item as view
         Transformation transformation = new RoundedTransformationBuilder()
                 .borderWidthDp(0)
