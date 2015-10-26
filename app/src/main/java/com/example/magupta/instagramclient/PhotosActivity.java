@@ -85,8 +85,6 @@ public class PhotosActivity extends AppCompatActivity {
                     if (photosJSON != null) {
                         for (int i = 0; i < photosJSON.length(); i++) {
                             JSONObject photoJSON = photosJSON.getJSONObject(i);
-                            //TODO convert json directly to complete object of photos without manually work
-                            // decode the attirbutes of json into  a data model
                             InstagramPhoto instagramPhoto = new InstagramPhoto();
                             instagramPhoto.setUsername(photoJSON.getJSONObject("user").getString("username"));
                             if (photoJSON.optJSONObject("caption") != null) {
@@ -97,6 +95,7 @@ public class PhotosActivity extends AppCompatActivity {
                             instagramPhoto.setImageWidth(photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("width"));
                             instagramPhoto.setLikes(photoJSON.getJSONObject("likes").getInt("count"));
                             instagramPhoto.setProfilePicture(photoJSON.getJSONObject("user").getString("profile_picture"));
+                            instagramPhoto.setCreatedTime(photoJSON.getLong("created_time"));
                             photos.add(instagramPhoto);
 
                         }

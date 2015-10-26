@@ -1,7 +1,6 @@
 package com.example.magupta.instagramclient;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +34,8 @@ public class InstagramPhotoAdapter extends ArrayAdapter<InstagramPhoto> {
 
         // Look up views for populating the data ( image , caption )
         TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
+        TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername1);
+        TextView tvCreateTime = (TextView) convertView.findViewById(R.id.createTime);
         ImageView ivPhoto  = (ImageView) convertView.findViewById(R.id.ivPhoto);
         TextView tvLikes = (TextView) convertView.findViewById(R.id.tvLikes);
         ImageView ivProfilePicture=  (ImageView) convertView.findViewById(R.id.ivProfilePic);
@@ -42,17 +43,18 @@ public class InstagramPhotoAdapter extends ArrayAdapter<InstagramPhoto> {
 
         // Insert the model data into each of the view items
         tvCaption.setText(photo.getCaption());
+        tvUsername.setText(photo.getUsername());
+        tvCreateTime.setText(photo.getCreatedTime());
 //        tvUsername.setText(photo.getUsername());
         tvLikes.setText(photo.getLikes());
         // Clear out the image
         ivPhoto.setImageResource(0);
         //Insert Image using Picasso
-        Picasso.with(getContext()).load(photo.getImageUrl()).into(ivPhoto);
+        Picasso.with(getContext()).load(photo.getImageUrl()).placeholder(R.drawable.loader).into(ivPhoto);
         // Return the created item as view
         Transformation transformation = new RoundedTransformationBuilder()
-                .borderColor(Color.BLACK)
-                .borderWidthDp(3)
-                .cornerRadiusDp(30)
+                .borderWidthDp(0)
+                .cornerRadiusDp(25)
                 .oval(false)
                 .build();
 

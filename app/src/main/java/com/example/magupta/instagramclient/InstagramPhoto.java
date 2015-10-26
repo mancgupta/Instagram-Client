@@ -16,6 +16,30 @@ public class InstagramPhoto {
     String imageWidth;
     int likes;
     String profilePicture;
+    long createdTime;
+
+    public void setCreatedTime(long createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getCreatedTime() {
+        long time = System.currentTimeMillis() - createdTime * 1000;
+        int seconds = (int) (time/1000);
+        int minutes = (int) (seconds/60);
+        int hours = (int) (minutes/60);
+        int days = (int) hours/24;
+        int weeks = (int) days/7;
+
+        if ( weeks > 0)
+            return weeks + " w";
+        if (days > 0)
+            return days + " d";
+        if (hours > 0)
+            return hours + " h";
+        if (minutes > 0)
+            return minutes + " m";
+        return seconds + " s";
+    }
 
     public String getProfilePicture() {
         return profilePicture;
